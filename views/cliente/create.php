@@ -1,6 +1,6 @@
 <h1>Agregar Nuevo Cliente</h1>
 
-<form action="index.php?controller=cliente&action=store" method="POST">
+<form action="index.php?controller=cliente&action=crear" method="POST">
     <table border="1" cellpadding="5" cellspacing="0">
         <tr>
             <td><strong>Nombre:</strong></td>
