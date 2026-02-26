@@ -17,25 +17,20 @@
         </tr>
     </thead>
     <tbody>
-        <?php if(!empty($clientes)): ?>
-            <?php foreach($clientes as $cliente): ?>
-                <tr>
-                    <td><?= $cliente->id_cliente ?></td>
-                    <td><?= $cliente->nombre ?></td>
-                    <td><?= $cliente->apellido ?></td>
-                    <td><?= $cliente->DNI ?></td>
-                    <td><?= $cliente->teléfono ?></td>
-                    <td><?= $cliente->dirección ?></td>
-                    <td>
-                        <a href="index.php?controller=cliente&action=edit&id=<?= $cliente->id_cliente ?>">Editar</a> |
-                        <a href="index.php?controller=cliente&action=delete&id=<?= $cliente->id_cliente ?>" onclick="return confirm('¿Seguro que deseas eliminar este cliente?')">Eliminar</a>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-        <?php else: ?>
+        <?php foreach ($clientes as $cliente): ?>
             <tr>
-                <td colspan="7">No hay clientes registrados.</td>
+                <td><?= $cliente->id_cliente ?></td>
+                <td><?= $cliente->nombre ?></td>
+                <td><?= $cliente->apellido ?></td>
+                <td><?= $cliente->DNI ?></td>
+                <td><?= $cliente->teléfono ?></td>
+                <td><?= $cliente->dirección ?></td>
+                <td>
+                    <a href="index.php?controller=cliente&action=edit&id=<?= $cliente->id_cliente ?>">Editar</a> |
+                    <a href="index.php?controller=cliente&action=delete&id=<?= $cliente->id_cliente ?>"
+                        onclick="return confirm('¿Seguro que deseas eliminar este cliente?')">Eliminar</a>
+                </td>
             </tr>
-        <?php endif; ?>
+        <?php endforeach; ?>
     </tbody>
 </table>
