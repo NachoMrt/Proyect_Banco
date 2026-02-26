@@ -7,7 +7,7 @@ class ClienteController
     public function index()
     {
         $clientes = (new Cliente())->getAll();
-        require './views/clientes/listar.php';
+        require 'views/cliente/index.php';
     }
 
     public function crear()
