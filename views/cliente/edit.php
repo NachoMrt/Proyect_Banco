@@ -30,13 +30,13 @@
         <tr>
             <td><strong>Teléfono:</strong></td>
             <td>
-                <input type="number" name="teléfono" value="<?= $cliente->teléfono ?>" required>
+                <input type="number" name="telefono" value="<?= $cliente->teléfono ?>" required>
             </td>
         </tr>
         <tr>
             <td><strong>Dirección:</strong></td>
             <td>
-                <input type="text" name="dirección" value="<?= htmlspecialchars($cliente->dirección) ?>" required>
+                <input type="text" name="direccion" value="<?= htmlspecialchars($cliente->dirección) ?>" required>
             </td>
         </tr>
         <tr>
