@@ -13,10 +13,10 @@ class Cuenta
     {
         return $this->db->query("SELECT * FROM cuentas")->fetchAll();
     }
-    public function getByClient($email)
+    public function getByClient($id_cliente)
     {
         $stmt = $this->db->prepare("SELECT * FROM cuentas WHERE id_cliente = ?");
-        $stmt->execute([$email]);
+        $stmt->execute([$id_cliente]);
         $cuenta_buscar = $stmt->fetch(PDO::FETCH_ASSOC);
         if (filter_var($cuenta_buscar, FILTER_VALIDATE_BOOLEAN) === false && $cuenta_buscar === false) {
             return false;
