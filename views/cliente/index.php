@@ -27,8 +27,8 @@
                 <td><?= $cliente['dirección'] ?></td>
                 <td>
                
-                    <a href="index.php?controller=cliente&action=edit&id=<?= $cliente->id_cliente ?>">Editar</a> |
-                    <a href="index.php?controller=cliente&action=delete&id=<?= $cliente->id_cliente ?>"
+                    <a href="index.php?controller=cliente&action=edit&id=<?= $cliente ['id_cliente'] ?>">Editar</a> |
+                    <a href="index.php?controller=cliente&action=delete&id=<?= $cliente ['id_cliente'] ?>"
                         onclick="return confirm('¿Seguro que deseas eliminar este cliente?')">Eliminar</a>
                 </td>
             </tr>
