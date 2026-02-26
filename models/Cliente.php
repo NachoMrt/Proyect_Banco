@@ -24,15 +24,15 @@ class Cliente
             return $cliente_buscar;
         }
     }
-    public function save($nombre, $apellidos, $dni, $telefono, $email, $contrasenia)
+    public function save($nombre, $apellidos, $dni, $telefono, $direccion, $email, $contrasenia)
     {
-        $stmt = $this->db->prepare("INSERT INTO clientes (nombre, apellidos, DNI, telefono, email, password) VALUES(?,?,?,?, ?)");
-        $stmt->execute([$nombre, $apellidos, $dni, $telefono, $email, $contrasenia]);
+        $stmt = $this->db->prepare("INSERT INTO clientes (nombre, apellidos, DNI, telefono, direccion, email, password) VALUES(?,?,?,?, ?)");
+        $stmt->execute([$nombre, $apellidos, $dni, $telefono, $direccion, $email, $contrasenia]);
     }
-    public function update($id, $nombre, $apellidos, $email, $telefono)
+    public function update($id, $nombre, $apellidos, $email, $telefono, $direccion)
     {
-        $stmt = $this->db->prepare("UPDATE clientes SET nombre = ?,apellidos = ?,email = ?, telefono = ? WHERE id = ?");
-        $stmt->execute([$nombre, $apellidos, $email, $telefono, $id]);
+        $stmt = $this->db->prepare("UPDATE clientes SET nombre = ?,apellidos = ?,email = ?, telefono = ?, direccion = ? WHERE id = ?");
+        $stmt->execute([$nombre, $apellidos, $email, $telefono, $direccion, $id]);
     }
     public function delete($id)
     {
@@ -45,11 +45,5 @@ class Cliente
         $stmt = $this->db->prepare("SELECT * FROM clientes WHERE id = ?");
         $stmt->execute([$id]);
         return $stmt->fetch();
-    }
-
-    public function restaDinero($id_cliente, $cantidad)
-    {
-        $stmt = $this->db->prepare('UPDATE clientes SET saldo = saldo - ? WHERE id = ?');
-        $stmt->execute([$cantidad, $id_cliente]);
     }
 }
