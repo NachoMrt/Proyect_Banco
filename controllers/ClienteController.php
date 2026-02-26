@@ -12,10 +12,10 @@ class ClienteController
 
     public function crear()
     {
-    // 1. Instanciamos el modelo
+    // Instanciamos el modelo
         $modeloCliente = new Cliente();
 
-    // 2. Si el usuario envió el formulario (POST)
+    // Si el usuario envió el formulario (POST)
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // Llamamos al método insertar del modelo
@@ -34,7 +34,7 @@ class ClienteController
         }
 
         // 3. Si no es POST, simplemente cargamos la vista del formulario vacío
-        require './views/clientes/crear.php';
+        require './views/cliente/crear.php';
     }
 
     public function editar()
@@ -62,7 +62,7 @@ class ClienteController
         $cliente = $modeloCliente->getById($_GET['id']);
 
         // Cargamos vista edicion
-        require './views/clientes/editar.php';
+        require './views/cliente/editar.php';
     }
 
     public function eliminar()
