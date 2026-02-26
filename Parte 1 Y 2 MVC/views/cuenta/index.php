@@ -32,3 +32,5 @@
         <?php endforeach; ?>
     </tbody>
 </table>
+
+<a href="index.php?controller=cliente&action=index">Ir a clientes</a>
