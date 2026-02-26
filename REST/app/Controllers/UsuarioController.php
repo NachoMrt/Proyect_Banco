@@ -1,0 +1,56 @@
+<?php
+// El controlador es el que contiene la lógica real de los endpoints (CRUD, validaciones…).
+
+require_once __DIR__ . '/../Models/Usuario.php';
+
+class UsuarioController {
+
+    public function index() {
+        echo json_encode(Usuario::all());
+    }
+
+    public function show($id) {
+        $usuario = Usuario::find($id);
+        if(!$usuario) {
+            http_response_code(404);
+            echo json_encode(['mensaje'=>'Usuario no encontrado']);
+        } else {
+            echo json_encode($usuario);
+        }
+    }
+
+    public function store($data) {
+        if(!isset($data['nombre']) || !isset($data['email'])) {
+            http_response_code(400);
+            echo json_encode(['mensaje'=>'Datos incompletos']);
+            return;
+        }
+        $usuario = Usuario::create($data);
+        http_response_code(201);
+        echo json_encode($usuario);
+    }
+
+    public function update($id, $data) {
+        $usuario = Usuario::update($id, $data);
+        if(!$usuario) {
+            http_response_code(404);
+            echo json_encode(['mensaje'=>'Usuario no encontrado']);
+        } else {
+            echo json_encode($usuario);
+        }
+    }
+
+    public function delete($id) {
+        $result = Usuario::delete($id);
+        if($result) {
+            echo json_encode(['mensaje'=>'Usuario eliminado']);
+        } else {
+            http_response_code(404);
+            echo json_encode(['mensaje'=>'Usuario no encontrado']);
+        }
+    }
+
+}
+
+
+
