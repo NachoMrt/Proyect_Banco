@@ -1,36 +1,69 @@
 <?php
 
 require_once './models/Cuenta.php';
-require_once './models/Cliente.php';
+
 
 class CuentaController
 {
-    public function index()
+    public function index(): void
     {
+        // 1. Obtenemos todas las cuentas del modelo
         $cuentas = (new Cuenta())->getAll();
-        require './views/cuentas/listar.php';
+        require './views/cuenta/index.php';
     }
 
-    public function crear()
+    public function create(): void
     {
-        $clientes = (new Cliente())->getAll(); // Para el select
+        $modeloCuenta = new Cuenta();
 
-        if ($_POST) {
-            (new Cuenta())->save(
+        // SI el usuario envió el formulario (POST)
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            
+            // Llamamos al método save del modelo Cuenta
+            $modeloCuenta->save(
                 $_POST['tipo_cuenta'],
-                $_POST['id_cliente'] // FK
+                $_POST['saldo'],
+                $_POST['id_cliente']
             );
 
-            header("Location: ./frontController.php?&accion=index&controller=Cuenta");
+            // Redirección al terminar
+            header("Location: ./index.php?controller=Cuenta&accion=index");
+            exit;
         }
 
-        require './views/cuentas/crear.php';
+        // Si no es POST, cargamos la vista del formulario vacío
+        require './views/cuenta/create.php';
     }
 
-    public function eliminar()
+    public function edit(): void
+    {
+        $modeloCuenta = new Cuenta();
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            // Llamamos al modelo respetando el orden de los 5 parámetros
+            $modeloCuenta->update(
+                $_POST['id_cuenta'],
+                $_POST['tipo_cuenta'],
+                $_POST['saldo'],
+                $_POST['fecha_apertura'],
+                $_POST['id_cliente']
+            );
+
+            // Redirección usando tus variables de enrutador (c=Controlador, a=Acción)
+            header("Location: ./index.php?c=Cuenta&a=edit");
+            exit;
+        }
+
+        // Si es GET, cargamos los datos actuales para el formulario
+        $id = $_GET['id'];
+        $cuenta = $modeloCuenta->getById($id);
+        require './views/cuenta/edit.php';
+    }
+
+    public function delete(): void
     {
         (new Cuenta())->delete($_GET['id']);
-
-        header("Location: ./frontController.php?&accion=index&controller=Cuenta");
+        header("Location: ./index.php?accion=index&controller=Cuenta");
+        exit;
     }
 }

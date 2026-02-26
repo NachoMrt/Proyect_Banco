@@ -3,11 +3,11 @@
 // 1- Selecciono el controlador:
  // Lee ?c= de la URL.
   // Si no existe, usa Usuario por defecto.
-$c = $_GET['c'] ?? 'Cliente';
+$c = $_GET['controller'] ?? 'Cliente';
 // 2- Selecciono la acción:
  // Lee ?a= de la URL.
   // Si no existe, llama a index().
-$a = $_GET['a'] ?? 'index';
+$a = $_GET['action'] ?? 'index';
 
 // 3- Carga el controlador:
 // Incluye el archivo del controlador elegido.

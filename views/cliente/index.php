@@ -35,3 +35,5 @@
         <?php endforeach; ?>
     </tbody>
 </table>
+
+<a href="index.php?controller=cuenta&action=index">Ir a cuentas</a>
