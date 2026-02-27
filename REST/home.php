@@ -14,10 +14,10 @@
     </header>
     <main>
         <div>
-            <a href="app/views/cliente.php">Clientes</a>
+            <a href="app/views/empleados.php">Empleados</a>
         </div>
         <div>
-            <a href="app/views/empleados.php">Empleados</a>
+            <a href="app/views/cliente.php">Clientes</a>
         </div>
         <div>
             <a href="app/views/cuenta.php">Cuentas</a>
