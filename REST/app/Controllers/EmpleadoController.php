@@ -1,21 +1,21 @@
 <?php
 // El controlador es el que contiene la lógica real de los endpoints (CRUD, validaciones…).
 
-require_once __DIR__ . '/../Models/Cliente.php';
+require_once __DIR__ . '/../Models/Empleado.php';
 
 class ClienteController {
 
     public function index() {
-        echo json_encode(Cliente::all());
+        echo json_encode(Empleado::all());
     }
 
     public function show($id) {
-        $cliente = Cliente::find($id);
-        if(!$cliente) {
+        $empleado = Empleado::find($id);
+        if(!$empleado) {
             http_response_code(404);
-            echo json_encode(['mensaje'=>'Cliente no encontrado']);
+            echo json_encode(['mensaje'=>'Empleado no encontrado']);
         } else {
-            echo json_encode($cliente);
+            echo json_encode($empleado);
         }
     }
 
@@ -25,28 +25,28 @@ class ClienteController {
             echo json_encode(['mensaje'=>'Datos incompletos']);
             return;
         }
-        $cliente = Cliente::create($data);
+        $empleado = Empleado::create($data);
         http_response_code(201);
-        echo json_encode($cliente);
+        echo json_encode($empleado);
     }
 
     public function update($id, $data) {
-        $cliente = Cliente::update($id, $data);
-        if(!$cliente) {
+        $empleado = Empleado::update($id, $data);
+        if(!$empleado) {
             http_response_code(404);
-            echo json_encode(['mensaje'=>'Cliente no encontrado']);
+            echo json_encode(['mensaje'=>'Empleado no encontrado']);
         } else {
-            echo json_encode($cliente);
+            echo json_encode($empleado);
         }
     }
 
     public function delete($id) {
-        $result = Cliente::delete($id);
+        $result = Empleado::delete($id);
         if($result) {
-            echo json_encode(['mensaje'=>'Cliente eliminado']);
+            echo json_encode(['mensaje'=>'Empleado eliminado']);
         } else {
             http_response_code(404);
-            echo json_encode(['mensaje'=>'Cliente no encontrado']);
+            echo json_encode(['mensaje'=>'Empleado no encontrado']);
         }
     }
 
