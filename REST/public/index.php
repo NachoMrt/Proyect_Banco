@@ -1,7 +1,7 @@
 <?php
 
 header('Content-Type: application/json');
-require_once __DIR__ . '/../app/config/Router.php';
+require_once __DIR__ . '/../app/Core/Router.php';
 
 $method = $_SERVER['REQUEST_METHOD'];   
 $uri = $_SERVER['REQUEST_URI'];   
