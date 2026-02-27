@@ -1,7 +1,7 @@
 <?php
 class Database {
     private static $host = "localhost";
-    private static $db = "ejemplo";
+    private static $db = "banco";
     private static $user = "root";
     private static $pass = "";
     private static $conn;
