@@ -20,7 +20,7 @@ class ClienteController {
     }
 
     public function store($data) {
-        if(!isset($data['nombre']) || !isset($data['email'])) {
+        if(!isset($data['nombre']) || !isset($data['apellido']) || !isset($data['DNI']) || !isset($data['telefono']) || !isset($data['direccion'])) {
             http_response_code(400);
             echo json_encode(['mensaje'=>'Datos incompletos']);
             return;

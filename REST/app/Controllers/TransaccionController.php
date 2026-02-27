@@ -3,7 +3,7 @@
 
 require_once __DIR__ . '/../Models/Transaccion.php';
 
-class ClienteController {
+class TransaccionController {
 
     public function index() {
         echo json_encode(Transaccion::all());
@@ -20,7 +20,7 @@ class ClienteController {
     }
 
     public function store($data) {
-        if(!isset($data['nombre']) || !isset($data['email'])) {
+        if(!isset($data['fecha']) || !isset($data['tipo']) || !isset($data['monto']) || !isset($data['id_cuenta'])) {
             http_response_code(400);
             echo json_encode(['mensaje'=>'Datos incompletos']);
             return;

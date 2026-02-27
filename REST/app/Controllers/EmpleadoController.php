@@ -3,7 +3,7 @@
 
 require_once __DIR__ . '/../Models/Empleado.php';
 
-class ClienteController {
+class EmpleadoController {
 
     public function index() {
         echo json_encode(Empleado::all());
@@ -20,7 +20,7 @@ class ClienteController {
     }
 
     public function store($data) {
-        if(!isset($data['nombre']) || !isset($data['email'])) {
+        if(!isset($data['nombre']) || !isset($data['cargo']) || !isset($data['sucursal']) || !isset($data['telefono'])) {
             http_response_code(400);
             echo json_encode(['mensaje'=>'Datos incompletos']);
             return;
