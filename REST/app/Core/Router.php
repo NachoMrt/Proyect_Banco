@@ -23,7 +23,7 @@ class Router {
             usuarios/1      → ['usuarios','1']
         */
         $parts = explode('/', trim($uri,'/'));  
-        if($parts[0] != 'usuarios') {
+        if($parts[0] != 'cliente') {
             http_response_code(404);  // Si la primera parte de la URL no es 'usuarios', devuelve 404.
                                                     // Esto evita que alguien llame a cualquier otra ruta y rompa tu API.
             echo json_encode(['mensaje'=>'Ruta no encontrada']);  // json_encode: convierte un array o un objeto PHP en una cadena JSON.
