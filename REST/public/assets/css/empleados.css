@@ -1,14 +1,149 @@
+/* Reset & basics */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    padding: 20px 80px 0 80px;
+    background-color: #f4f6f8;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    height: 100vh;
     align-items: center;
+    gap: 20px;
+    min-height: 100vh;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+div {
+    background-color: #fff;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+.text {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+/* Forms styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+form label {
+    font-weight: 500;
+    margin-bottom: 4px;
+    color: #555;
+}
+
+form input {
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.2s;
+}
+
+form input:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+/* Buttons */
+button {
+    padding: 10px 15px;
+    background-color: #3498db;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+/* Table styling */
+table {
+    border-collapse: collapse;
+    width: 90%;
+    max-width: 1000px;
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+thead {
+    background-color: #3498db;
+    color: #fff;
+    text-align: left;
+}
+
+thead th {
+    padding: 12px 15px;
+    font-weight: 600;
+}
+
+tbody td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    color: #333;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #f1f7fc;
+}
+
+tbody button {
+    padding: 6px 12px;
+    font-size: 14px;
+}
+
+.edit_empl {
+    background-color: #f1c40f;
+    margin-right: 5px;
+}
+
+.edit_empl:hover {
+    background-color: #d4ac0d;
+}
+
+.borrar_empl {
+    background-color: #e74c3c;
+}
+
+.borrar_empl:hover {
+    background-color: #c0392b;
+}
+
+.edit_container {
+    width: 100%;
+    max-width: 500px;
+    margin-top: 20px;
+    background-color: #fff;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }

@@ -10,7 +10,10 @@
 <body>
     <h1>Lista de todos empleados</h1>
     <div>
-        <strong>Nuevo empleado</strong>
+        <div class="text">
+            <strong>Nuevo empleado</strong>
+        </div>
+        
         <form id="createForm">
             <label>Nombre:</label>
             <input type="text" id="crear_nombre" required>
