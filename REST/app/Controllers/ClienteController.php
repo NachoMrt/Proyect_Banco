@@ -1,21 +1,21 @@
 <?php
 // El controlador es el que contiene la lógica real de los endpoints (CRUD, validaciones…).
 
-require_once __DIR__ . '/../Models/Usuario.php';
+require_once __DIR__ . '/../Models/Cliente.php';
 
-class UsuarioController {
+class ClienteController {
 
     public function index() {
-        echo json_encode(Usuario::all());
+        echo json_encode(Cliente::all());
     }
 
     public function show($id) {
-        $usuario = Usuario::find($id);
-        if(!$usuario) {
+        $cliente = Cliente::find($id);
+        if(!$cliente) {
             http_response_code(404);
-            echo json_encode(['mensaje'=>'Usuario no encontrado']);
+            echo json_encode(['mensaje'=>'Cliente no encontrado']);
         } else {
-            echo json_encode($usuario);
+            echo json_encode($cliente);
         }
     }
 
@@ -25,28 +25,28 @@ class UsuarioController {
             echo json_encode(['mensaje'=>'Datos incompletos']);
             return;
         }
-        $usuario = Usuario::create($data);
+        $cliente = Cliente::create($data);
         http_response_code(201);
-        echo json_encode($usuario);
+        echo json_encode($cliente);
     }
 
     public function update($id, $data) {
-        $usuario = Usuario::update($id, $data);
-        if(!$usuario) {
+        $cliente = Cliente::update($id, $data);
+        if(!$cliente) {
             http_response_code(404);
-            echo json_encode(['mensaje'=>'Usuario no encontrado']);
+            echo json_encode(['mensaje'=>'Cliente no encontrado']);
         } else {
-            echo json_encode($usuario);
+            echo json_encode($cliente);
         }
     }
 
     public function delete($id) {
-        $result = Usuario::delete($id);
+        $result = Cliente::delete($id);
         if($result) {
-            echo json_encode(['mensaje'=>'Usuario eliminado']);
+            echo json_encode(['mensaje'=>'Cliente eliminado']);
         } else {
             http_response_code(404);
-            echo json_encode(['mensaje'=>'Usuario no encontrado']);
+            echo json_encode(['mensaje'=>'Cliente no encontrado']);
         }
     }
 
