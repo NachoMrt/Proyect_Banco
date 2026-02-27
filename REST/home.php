@@ -20,7 +20,7 @@
             <a href="app/views/empleados.php">Empleados</a>
         </div>
         <div>
-            <a href="app/views/cuentas.php">Cuentas</a>
+            <a href="app/views/cuenta.php">Cuentas</a>
         </div>
         <div>
             <a href="app/views/transacciones.php">Transacciones</a>
