@@ -1,44 +1,45 @@
 <?php
 
-require_once __DIR__ . '/../Controllers/UsuarioController.php';
+require_once __DIR__ . '/../Controllers/EmpleadoController.php';
 
 // Define la clase Router que se encargará de analizar la URL y el método HTTP.
 class Router {
     private $controller;
 
+    
     public function __construct() {
-        $this->controller = new UsuarioController();
+        $this->controller = new EmpleadoController();
     }
 
     /* Este es el método principal del Router.
     Recibe:
         $method → GET, POST, PUT, DELETE
-        $uri → ruta limpia (usuarios o usuarios/1)
+        $uri → ruta limpia (Empleados o Empleados/1)
         $data → datos del body de POST/PUT (array PHP)
     */
     public function route($method, $uri, $data=null) {
         /*
         Separa la URL en partes usando /.
-            usuarios        → ['usuarios']
-            usuarios/1      → ['usuarios','1']
+            Empleados        → ['Empleados']
+            Empleados/1      → ['Empleados','1']
         */
         $parts = explode('/', trim($uri,'/'));  
-        if($parts[0] != 'cliente') {
-            http_response_code(404);  // Si la primera parte de la URL no es 'usuarios', devuelve 404.
+        if($parts[0] != 'Empleado') {
+            http_response_code(404);  // Si la primera parte de la URL no es 'Empleados', devuelve 404.
                                                     // Esto evita que alguien llame a cualquier otra ruta y rompa tu API.
             echo json_encode(['mensaje'=>'Ruta no encontrada']);  // json_encode: convierte un array o un objeto PHP en una cadena JSON.
             return;
         }
 
-        // Si hay un segundo segmento en la URL (usuarios/1), lo guarda en $id.
-        //Si no existe (usuarios), $id = null.
+        // Si hay un segundo segmento en la URL (Empleados/1), lo guarda en $id.
+        //Si no existe (Empleados), $id = null.
         $id = $parts[1] ?? null;
 
         // Según el método HTTP, decide qué acción ejecutar en el controlador:
         switch($method) {
             case 'GET':
-                $id ? $this->controller->show($id) : $this->controller->index(); // Si hay ID → muestra un usuario específico
-                                                                                    // Si no → devuelve todos los usuarios
+                $id ? $this->controller->show($id) : $this->controller->index(); // Si hay ID → muestra un Empleado específico
+                                                                                    // Si no → devuelve todos los Empleados
                 break;
             case 'POST':
                 $this->controller->store($data);
@@ -62,9 +63,9 @@ class Router {
 /*
 Router.php es como el centro de control de la API:
     Recibe la URL y método HTTP desde index.php
-    Limpia y separa la ruta (usuarios, usuarios/1)
+    Limpia y separa la ruta (Empleados, Empleados/1)
     Decide qué acción del controlador ejecutar
-    Devuelve la respuesta JSON al usuario
+    Devuelve la respuesta JSON al Empleado
     index.php → entrada
     Router.php → dirige la petición
     Controller → hace la lógica
